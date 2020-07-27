@@ -1,0 +1,6 @@
+framework module Pods_Milestone_2_Submission {
+  umbrella header "Pods-Milestone 2 Submission-umbrella.h"
+
+  export *
+  module * { export * }
+}
