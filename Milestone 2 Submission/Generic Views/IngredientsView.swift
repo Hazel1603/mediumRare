@@ -20,7 +20,7 @@ struct IngredientsView: View {
         ingredientList.addIngredient(newIng: Ingredient(id: String(ingredientList.ingredients.count), name: newName, qty: newQty, sub: sub))
         self.newName = ""
         self.newQty = ""
-        self.sub = "nil"
+        self.sub = ""
     }
     
     var body: some View {
@@ -84,12 +84,12 @@ struct IngredientsView: View {
 class IngredientList: ObservableObject {
     @Published var ingredients = [Ingredient]()
     
-    func edit(decodedIng: [ingredients], subs: [String]) {
+    func edit(decodedIng: [IndViewIng], subs: [String]) {
         if ingredients.count >= decodedIng.count {
             return
         } else if decodedIng.count >= 1 {
             for m in 0...decodedIng.count-1 {
-                ingredients.append(Ingredient(id: String(m), name: decodedIng[m].title, qty: decodedIng[m].qty, sub: subs[m]))
+                ingredients.append(Ingredient(id: String(m), name: decodedIng[m].name, qty: decodedIng[m].qty, sub: decodedIng[m].sub))
             }
         }
     }
@@ -175,13 +175,6 @@ struct IngRowView: View {
             }
         }
     }
-}
-
-struct Ingredient: Identifiable, Hashable {
-    var id = String()
-    var name: String
-    var qty: String
-    var sub: String = "nil"
 }
 
 struct IngredientsView_Previews: PreviewProvider {

@@ -9,78 +9,6 @@
 import Foundation
 import FirebaseDatabase
 
-struct DecodedRecipe: Identifiable, Comparable {
-    var id: String = ""
-    var title: String = ""
-    var author: String = ""
-    var cookTime: String = ""
-    var prepTime: String = ""
-    var cuisine: String = ""
-    var course: String = ""
-    var difficulty: String = ""
-    var steps: [String] = []
-    var cookware: [String] = []
-    var servingSize: String = ""
-    var notes: [String] = []
-    var likes: Int = 0
-    var ingList: [ingredients] = []
-    var sub: [String] = []
-    var ingqty: Int = 0
-    
-    mutating func decreaseLikes() {
-        self.likes -= 1
-    }
-    
-    mutating func increaseLikes() {
-        self.likes += 1
-    }
-
-    static func < (lhs: DecodedRecipe, rhs: DecodedRecipe) -> Bool {
-        return lhs.likes > rhs.likes
-    }
-    
-    static func == (lhs: DecodedRecipe, rhs: DecodedRecipe) -> Bool {
-        return true
-    }
-    
-    func IndViewIngList() -> [IndViewIng] {
-        var ret: [IndViewIng] = []
-        for k in 0...ingqty-1 {
-            let curr = IndViewIng(qty: ingList[k].qty, ing: ingList[k].title, sub: sub[k])
-            ret.append(curr)
-        }
-        return ret
-    }
-}
-
-struct ingredients: Identifiable{
-    var id = UUID()
-    var title, qty: String
-}
-
-struct ingSearchResults: Identifiable, Comparable {
-    var id = UUID()
-    var recipe: DecodedRecipe
-    var ingPercentage: Float
-    var ingCount: String
-    var cookwarePercentage: Float
-    var cookwareCount: String
-    
-    static func == (lhs: ingSearchResults, rhs: ingSearchResults) -> Bool {
-        return lhs.cookwarePercentage > rhs.cookwarePercentage
-    }
-    
-    static func < (lhs: ingSearchResults, rhs: ingSearchResults) -> Bool {
-        if lhs.ingPercentage > rhs.ingPercentage {
-            return true
-        } else if lhs.ingPercentage == rhs.ingPercentage {
-            return lhs.cookwarePercentage > rhs.cookwarePercentage
-        } else {
-            return false
-        }
-    }
-}
-
 class RecipeViewModel: ObservableObject {
     @Published var recipes = [DecodedRecipe]()
     @Published var searchResults = [ingSearchResults]()
@@ -108,7 +36,7 @@ class RecipeViewModel: ObservableObject {
     func removeRecipe(uuid: String) {
         ref.child("recipes").child(uuid).removeValue()
     }
-    
+
     // filters based on ingredient list and cookware list
     func filteredSearch(ingFilter: [String], cookwareFilter: [String]) {
         ref = ref.child("recipes")
@@ -116,46 +44,12 @@ class RecipeViewModel: ObservableObject {
         ref.observeSingleEvent(of:.value, with: { snapshot in
             for child in snapshot.children {
                 if let childSnapshot = child as? DataSnapshot,
-                let dict = childSnapshot.value as? [String: Any],
-                let ing = dict["Ingredients"] as? NSArray,
-                let qty = dict["Quantity"] as? NSArray,
-                let cookware = dict["cookware"] as? NSArray,
-                let title = dict["title"] as? String,
-                let k = dict["ingqty"] as? Int
+                let dict = childSnapshot.value as? [String: Any]
                 {
-                    print(title)
-                    // counting ingredients
-                    let totalIng: Double = Double(k)
-                    var countIng: Double = 0
-                    var ingList = [ingredients]()
-                    
-                    for curr in 0...(k-1) {
-                        let ingTitle = ing[curr] as! String
-                        let ingqty = qty[curr] as! String
-                        
-                        if contain(curr: ingTitle, list: ingFilter) {
-                            countIng += 1
-                        }
-                        
-                        let currIng = ingredients(title: ingTitle, qty: ingqty)
-                        ingList.append(currIng)
-                        
-                    }
-                    
-                    // counting cookware
-                    let totalCookware: Double = Double(cookware.count)
-                    var countCookware: Double = 0
-                    
-                    for curr in 0...(cookware.count-1) {
-                        if contain(curr: cookware[curr] as! String, list: cookwareFilter) {
-                            countCookware += 1
-                        }
-                    }
-                    
+                    // converts data into a DecodedRecipe
                     let curr = recipeConvert(dict: dict)
-                    let i = ingSearchResults(recipe: curr, ingPercentage: Float(countIng/totalIng), ingCount: "\(Int(countIng))/\(Int(totalIng))", cookwarePercentage: Float(countCookware/totalCookware), cookwareCount: "\(Int(countCookware))/\(Int(totalCookware))")
-                    
-                    self.searchResults.append(i)
+                    let searchResult = curr.getSearchResults(ingFilter: ingFilter, cookwareFilter: cookwareFilter, recipe: curr)
+                    self.searchResults.append(searchResult)
                     self.searchResults.sort()
                 }
             }
@@ -264,16 +158,6 @@ class RecipeViewModel: ObservableObject {
     }
 }
 
-func contain(curr: String, list: [String]) -> Bool {
-    var result = false
-    for i in list {
-        if i.lowercased().contains(curr.lowercased()) || curr.lowercased().contains(i.lowercased()) {
-            result = result || true
-        }
-    }
-    return result
-}
-
 func recipeConvert(dict: [String: Any]) -> DecodedRecipe {
     let id = dict["id"] as? String
     let ing = dict["Ingredients"] as? NSArray
@@ -293,12 +177,13 @@ func recipeConvert(dict: [String: Any]) -> DecodedRecipe {
     let notes = dict["notes"] as? NSArray
     let sub = dict["substitute"] as? NSArray
    
-   var ingList = [ingredients]()
+    var ingList = [IndViewIng]()
    
    for curr in 0...(k!-1) {
-       let ingTitle = ing![curr] as! String
-       let ingqty = qty![curr] as! String
-       let currIng = ingredients(title: ingTitle, qty: ingqty)
+        let ingTitle = ing![curr] as! String
+        let ingqty = qty![curr] as! String
+        let sub = sub![curr] as! String
+        let currIng = IndViewIng(name: ingTitle, qty: ingqty, sub: sub)
        ingList.append(currIng)
    }
     

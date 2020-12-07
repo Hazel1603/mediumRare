@@ -9,6 +9,7 @@
 import SwiftUI
 import FirebaseStorage
 
+// This View is for the Detailed version of the recipe.
 struct IndRecipeView: View {
     @EnvironmentObject var userProfile: UserProfile
     @ObservedObject var viewModel = RecipeViewModel()
@@ -58,7 +59,7 @@ struct IndRecipeView: View {
                             Text(curr.title)
                                 .font(Font.custom("Raleway-SemiBold", size: 36))
                             if curr.author == userProfile.username {
-                                NavigationLink(destination: Trial(optionalrecipe: self.curr, loaded: false, navigationBarTitle: "Edit")){
+                                NavigationLink(destination: Create_Edit_Delete_View(optionalrecipe: self.curr, loaded: false, navigationBarTitle: "Edit")){
                                     Text("Edit")
                                     .foregroundColor(Color(red: 204/255, green: 133/255, blue: 97/255))
                                         .font(.custom("Ubuntu-Light", size: 16))
@@ -211,7 +212,7 @@ struct IndRecipeView: View {
                 self.bookmarked = self.userProfile.checkUUIDExist(uuid: self.curr.id, list: self.userProfile.bookmarks)
                 self.liked = self.userProfile.checkUUIDExist(uuid: self.curr.id, list: self.userProfile.likes)
                 self.currentLikes = self.curr.likes
-                self.IndRecipeIngList = self.curr.IndViewIngList()
+                self.IndRecipeIngList = self.curr.ingList
                 if !self.imageFound {
                     self.imageURL = self.defaultpic
                 }
@@ -222,12 +223,6 @@ struct IndRecipeView: View {
     
 }
 
-struct IndViewIng: Identifiable, Hashable {
-    var id = UUID()
-    var qty: String
-    var ing: String
-    var sub: String
-}
 
 struct ingView: View {
     var curr: IndViewIng
@@ -241,7 +236,7 @@ struct ingView: View {
             }.frame(width: UIScreen.screenWidth/3)
             
             VStack (alignment: .leading){
-                Text(curr.ing)
+                Text(curr.name)
                     .font(.custom("Ubuntu-Light", size: 18))
                 if curr.sub != "nil" {
                     Text("Substitute with: \(curr.sub)")

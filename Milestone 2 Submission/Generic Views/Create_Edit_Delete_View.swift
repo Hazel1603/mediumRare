@@ -9,7 +9,7 @@
 import SwiftUI
 import FirebaseStorage
 
-struct Trial: View {
+struct Create_Edit_Delete_View: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var userProfile: UserProfile
     @State var optionalrecipe: DecodedRecipe
@@ -40,8 +40,8 @@ struct Trial: View {
     
     let difficulty = ["Easy", "Medium", "Hard", "Challenging"]
     @ObservedObject var ingredientList = IngredientList()
-    @ObservedObject var instructionList = InstructionList()
-    @ObservedObject var notesList = NotesList()
+    @ObservedObject var instructionList = ItemList()
+    @ObservedObject var notesList = ItemList()
     @ObservedObject var currentSelection = cuisineChoice()
     
     @State var showingImagePicker = false
@@ -67,13 +67,13 @@ struct Trial: View {
         self.cuisine = recipe.cuisine
         self.cookTime = recipe.cookTime
         self.prepTime = recipe.prepTime
-        self.cookwareString = arrayToString(array: recipe.cookware)
+        self.cookwareString = EncodedRecipe.arrayToString(array: recipe.cookware)
         self.servingSize = Int(recipe.servingSize) ?? 0
         self.currentSelection.edit(currChoice: recipe.course, array: courses)
         self.diffIndex = difficulty.firstIndex(of: recipe.difficulty) ?? 0
         self.ingredientList.edit(decodedIng: recipe.ingList, subs: recipe.sub)
-        self.instructionList.edit(instr: recipe.steps)
-        self.notesList.edit(note: recipe.notes)
+        self.instructionList.edit(lst: recipe.steps)
+        self.notesList.edit(lst: recipe.notes)
     }
     
     func loadImage() {
@@ -115,6 +115,35 @@ struct Trial: View {
         self.instructionList.reset()
         self.notesList.reset()
         self.image = nil
+    }
+    
+    func createEncodedRecipe() -> EncodedRecipe {
+        let ingredients = self.ingredientList.names()
+        let quantities = self.ingredientList.quantified()
+        let notee = self.notesList.arrayIt().isEmpty ? [""] : self.notesList.arrayIt()
+        let cookware = self.cookwareString.components(separatedBy: ", ")
+        
+        let curr: EncodedRecipe = EncodedRecipe(
+            id: self.optionalrecipe.id == "" ? UUID().uuidString : self.optionalrecipe.id,
+            title: self.title,
+            author: self.userProfile.username,
+            cookTime: self.cookTime,
+            prepTime: self.prepTime,
+            cuisine: self.cuisine,
+            course: self.currentSelection.title,
+            difficulty: self.difficulty[self.diffIndex],
+            steps: self.instructionList.arrayIt(),
+            cookware: cookware,
+            servingSize: String(self.servingSize),
+            notes: notee,
+            Ingredients: ingredients,
+            ingqty: ingredients.count,
+            likes: 0,
+            Quantity: quantities,
+            sub: self.ingredientList.subArray()
+        )
+        
+        return curr
     }
     
     var body: some View {
@@ -202,9 +231,6 @@ struct Trial: View {
                         }
                     }
                 }
-//                    Button(action: {
-//                        print(self.courses[self.courseIndex])
-//                    }) { Text("no")}
                 
                 //Difficulty Selection
                 Picker(selection: $diffIndex, label: Text("Difficulty")) {
@@ -214,24 +240,25 @@ struct Trial: View {
                             .font(.custom("Ubuntu-Light", size: 18))
                     }
                 }.pickerStyle(SegmentedPickerStyle()).cornerRadius(5.0)
-                // Chef Notes
-                NavigationLink(destination: NotesView(notesList: notesList)) {
-                    Text("Chef's notes")
+                
+                // Ingredients
+                NavigationLink(destination: IngredientsView(ingredientList: ingredientList)) {
+                    Text("Add Ingredients")
                         .foregroundColor(Color(red: 52/255, green: 83/255, blue: 96/255))
                         .font(.custom("Raleway-SemiBold", size: 18))
                         .padding()
                 }
-                //ingredient & Instructions
+                //Notes & Instructions
                 HStack {
-                    NavigationLink(destination: IngredientsView(ingredientList: ingredientList)) {
-                        Text("Add Ingredients")
+                    NavigationLink(destination: Instruction_Note_View(itemList: instructionList)) {
+                        Text("Instructions")
                             .foregroundColor(Color(red: 52/255, green: 83/255, blue: 96/255))
                             .font(.custom("Raleway-SemiBold", size: 18))
                             .padding()
                     }
                     Spacer()
-                    NavigationLink(destination: InstructionsView(instructionList: instructionList)) {
-                        Text("Instructions")
+                    NavigationLink(destination: Instruction_Note_View(itemList: notesList)) {
+                        Text("Chef's notes")
                             .foregroundColor(Color(red: 52/255, green: 83/255, blue: 96/255))
                             .font(.custom("Raleway-SemiBold", size: 18))
                             .padding()
@@ -275,36 +302,11 @@ struct Trial: View {
         })
         .alert(isPresented:$showingAlert) {
             Alert(title: Text("Are you sure?"), message: Text("You can't undo this action"), primaryButton: .destructive(Text("Yes")) {
-                //print("Adding your recipe ^_^")
-                let ingredients = self.ingredientList.names()
-                let quantities = self.ingredientList.quantified()
-                let notee = self.notesList.arrayIt().isEmpty ? [""] : self.notesList.arrayIt()
-                let cookware = self.cookwareString.components(separatedBy: ", ")
-
-                let curr: EncodedRecipe = EncodedRecipe(
-                    id: self.optionalrecipe.id == "" ? UUID().uuidString : self.optionalrecipe.id,
-                    title: self.title,
-                    author: self.userProfile.username,
-                    cookTime: self.cookTime,
-                    prepTime: self.prepTime,
-                    cuisine: self.cuisine,
-                    course: self.currentSelection.title,
-                    difficulty: self.difficulty[self.diffIndex],
-                    steps: self.instructionList.instr(),
-                    cookware: cookware,
-                    servingSize: String(self.servingSize),
-                    notes: notee,
-                    Ingredients: ingredients,
-                    ingqty: ingredients.count,
-                    likes: 0,
-                    Quantity: quantities,
-                    sub: self.ingredientList.subArray()
-                )
-
-                RecipeViewModel().addRecipe(recipe: curr)
-                self.userProfile.addYourRecipes(recipe: curr.id)
+                let encoded = createEncodedRecipe()
+                RecipeViewModel().addRecipe(recipe: encoded)
+                self.userProfile.addYourRecipes(recipe: encoded.id)
                 if self.inputImage != nil {
-                    let fileName = curr.id
+                    let fileName = encoded.id
                     self.uploadImageToFireBase(image: self.inputImage!, fileName: fileName)
                 }
 
@@ -312,7 +314,6 @@ struct Trial: View {
                 self.presentationMode.wrappedValue.dismiss()
                 }, secondaryButton: .cancel())
         }
-        
     }
 }
 
@@ -403,70 +404,13 @@ struct StepperView: View {
     }
 }
 
-struct Trial_Previews: PreviewProvider {
+struct Create_Edit_Delete_View_Previews: PreviewProvider {
     static var previews: some View {
-        Trial(optionalrecipe: DecodedRecipe(), loaded: false, navigationBarTitle: "Trial")
+        Create_Edit_Delete_View(optionalrecipe: DecodedRecipe(), loaded: false, navigationBarTitle: "Trial")
     }
 }
 
-struct EncodedRecipe: Identifiable {
-    var id: String
-    var title: String
-    var author: String
-    var cookTime: String
-    var prepTime: String
-    var cuisine: String
-    var course: String
-    var difficulty: String
-    var steps: [String]
-    var cookware: [String]
-    var servingSize: String
-    var notes: [String]
-    var Ingredients: [String]
-    var ingqty: Int
-    var likes: Int
-    var Quantity: [String]
-    var sub: [String]
-    
-    func makeItAnArray() -> [String: Any] {
-        let item = [
-            "id": self.id,
-            "title": self.title,
-            "author": self.author,
-            "cookTime": self.cookTime,
-            "prepTime": self.prepTime,
-            "cuisine": self.cuisine,
-            "course": self.course,
-            "difficulty": self.difficulty,
-            "cookware": self.cookware,
-            "servingSize": self.servingSize,
-            "notes": self.notes,
-            "ingqty": self.Ingredients.count,
-            "Ingredients": self.Ingredients,
-            "Quantity" : self.Quantity,
-            "steps": self.steps,
-            "likes": self.likes,
-            "substitute": self.sub
-            ] as [String : Any]
-        
-        return item
-    }
-    
-    
-}
 
-func arrayToString(array: [String]) -> String {
-    if array.isEmpty {
-        return ""
-    } else if array.count <= 1 {
-        return array[0]
-    } else {
-        var ret = ""
-        for m in 0...array.count-2{
-            ret += array[m]
-        }
-        ret += array[array.count-1]
-        return ret
-    }
-}
+
+
 
