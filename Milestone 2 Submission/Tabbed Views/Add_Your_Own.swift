@@ -12,7 +12,7 @@ import FirebaseStorage
 struct Add_Your_Own: View {
     var body: some View {
         NavigationView {
-            Trial(optionalrecipe: DecodedRecipe(), loaded: false, navigationBarTitle: "New Recipe")
+            Create_Edit_Delete_View(optionalrecipe: DecodedRecipe(), loaded: false, navigationBarTitle: "New Recipe")
         }
     }
 }

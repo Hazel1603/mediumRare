@@ -16,13 +16,11 @@
 		DA040A7724A1E195008777ED /* SearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA040A7624A1E195008777ED /* SearchPage.swift */; };
 		DA040A7924A1E1A3008777ED /* Add_Your_Own.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA040A7824A1E1A3008777ED /* Add_Your_Own.swift */; };
 		DA339D0124A9BF7700F23E2D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA339CFE24A9BF7700F23E2D /* ImagePicker.swift */; };
-		DA339D0224A9BF7700F23E2D /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA339CFF24A9BF7700F23E2D /* InstructionsView.swift */; };
 		DA339D0324A9BF7700F23E2D /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA339D0024A9BF7700F23E2D /* IngredientsView.swift */; };
 		DA339D0724B2FE2800F23E2D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA339D0424B2FE2700F23E2D /* ContentView.swift */; };
 		DA339D0824B2FE2800F23E2D /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA339D0524B2FE2700F23E2D /* SessionStore.swift */; };
 		DA339D0924B2FE2800F23E2D /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA339D0624B2FE2800F23E2D /* AuthView.swift */; };
 		DA339D0F24B3171300F23E2D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA339D0E24B3171300F23E2D /* Settings.swift */; };
-		DA339D1324B32CB900F23E2D /* UUIDRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA339D1224B32CB900F23E2D /* UUIDRecipe.swift */; };
 		DA339D1524B331A900F23E2D /* Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA339D1424B331A900F23E2D /* Bookmarks.swift */; };
 		DA3538BB24C8112300975847 /* Ubuntu-L.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA3538BA24C8112300975847 /* Ubuntu-L.ttf */; };
 		DA3538BF24C820DC00975847 /* FirebaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3538BC24C820DC00975847 /* FirebaseImageView.swift */; };
@@ -32,12 +30,17 @@
 		DA44463A24C80B3400B5D59D /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA44463824C80B3400B5D59D /* Raleway-SemiBold.ttf */; };
 		DA44463D24C80E7100B5D59D /* TahomaRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA44463C24C80E7100B5D59D /* TahomaRegular.ttf */; };
 		DA6FAD7F24CE977000B0724F /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FAD7E24CE976F00B0724F /* KeyboardView.swift */; };
-		DAB463CF24C959B3007B0375 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB463CE24C959B2007B0375 /* Trial.swift */; };
+		DAB463CF24C959B3007B0375 /* Create_Edit_Delete_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB463CE24C959B2007B0375 /* Create_Edit_Delete_View.swift */; };
 		DAE1BFE924B85BFB008A97CC /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BFE824B85BFA008A97CC /* UserProfileView.swift */; };
 		DAE1BFEB24B86E8B008A97CC /* IndRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BFEA24B86E8B008A97CC /* IndRecipeView.swift */; };
 		DAE7B84624C1FE3500733F53 /* MultilineTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7B84524C1FE3500733F53 /* MultilineTF.swift */; };
 		DAE90E7924A1E6CE00D4DCF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAE90E7824A1E6CE00D4DCF9 /* GoogleService-Info.plist */; };
-		DAE90E7B24A1ED1700D4DCF9 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE90E7A24A1ED1700D4DCF9 /* Recipe.swift */; };
+		DAE90E7B24A1ED1700D4DCF9 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE90E7A24A1ED1700D4DCF9 /* RecipeViewModel.swift */; };
+		DAFEDC2D257E1DC7007F1684 /* DecodedRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEDC2C257E1DC7007F1684 /* DecodedRecipe.swift */; };
+		DAFEDC30257E1E04007F1684 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEDC2F257E1E04007F1684 /* SearchResults.swift */; };
+		DAFEDC38257E2EF0007F1684 /* EncodedRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEDC37257E2EF0007F1684 /* EncodedRecipe.swift */; };
+		DAFEDC41257E30D6007F1684 /* Instruction_Note_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEDC40257E30D6007F1684 /* Instruction_Note_View.swift */; };
+		DAFEDC49257E348C007F1684 /* UUIDRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEDC48257E348C007F1684 /* UUIDRecipe.swift */; };
 		E973F35D2A56F3C8A5D6963F /* Pods_Milestone_2_Submission.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937F3FF08CB0EE8677FC3CF5 /* Pods_Milestone_2_Submission.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,13 +58,11 @@
 		DA040A7624A1E195008777ED /* SearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPage.swift; sourceTree = "<group>"; };
 		DA040A7824A1E1A3008777ED /* Add_Your_Own.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add_Your_Own.swift; sourceTree = "<group>"; };
 		DA339CFE24A9BF7700F23E2D /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		DA339CFF24A9BF7700F23E2D /* InstructionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
 		DA339D0024A9BF7700F23E2D /* IngredientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
 		DA339D0424B2FE2700F23E2D /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA339D0524B2FE2700F23E2D /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		DA339D0624B2FE2800F23E2D /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		DA339D0E24B3171300F23E2D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		DA339D1224B32CB900F23E2D /* UUIDRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UUIDRecipe.swift; path = "/Users/kagurayuuki/Documents/XCode /Milestone 2 Submission/Milestone 2 Submission/UUIDRecipe.swift"; sourceTree = "<absolute>"; };
 		DA339D1424B331A900F23E2D /* Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmarks.swift; sourceTree = "<group>"; };
 		DA3538BA24C8112300975847 /* Ubuntu-L.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-L.ttf"; sourceTree = "<group>"; };
 		DA3538BC24C820DC00975847 /* FirebaseImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseImageView.swift; sourceTree = "<group>"; };
@@ -71,12 +72,17 @@
 		DA44463824C80B3400B5D59D /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 		DA44463C24C80E7100B5D59D /* TahomaRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TahomaRegular.ttf; sourceTree = "<group>"; };
 		DA6FAD7E24CE976F00B0724F /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
-		DAB463CE24C959B2007B0375 /* Trial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
+		DAB463CE24C959B2007B0375 /* Create_Edit_Delete_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_Edit_Delete_View.swift; sourceTree = "<group>"; };
 		DAE1BFE824B85BFA008A97CC /* UserProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		DAE1BFEA24B86E8B008A97CC /* IndRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndRecipeView.swift; sourceTree = "<group>"; };
 		DAE7B84524C1FE3500733F53 /* MultilineTF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineTF.swift; sourceTree = "<group>"; };
 		DAE90E7824A1E6CE00D4DCF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DAE90E7A24A1ED1700D4DCF9 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		DAE90E7A24A1ED1700D4DCF9 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		DAFEDC2C257E1DC7007F1684 /* DecodedRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedRecipe.swift; sourceTree = "<group>"; };
+		DAFEDC2F257E1E04007F1684 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		DAFEDC37257E2EF0007F1684 /* EncodedRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodedRecipe.swift; sourceTree = "<group>"; };
+		DAFEDC40257E30D6007F1684 /* Instruction_Note_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction_Note_View.swift; sourceTree = "<group>"; };
+		DAFEDC48257E348C007F1684 /* UUIDRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUIDRecipe.swift; sourceTree = "<group>"; };
 		FFCDAEFC06845ECB82C2CEEF /* Pods-Milestone 2 Submission.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Milestone 2 Submission.debug.xcconfig"; path = "Target Support Files/Pods-Milestone 2 Submission/Pods-Milestone 2 Submission.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,19 +138,12 @@
 			children = (
 				DA040A6224A1E138008777ED /* AppDelegate.swift */,
 				DA040A6424A1E138008777ED /* SceneDelegate.swift */,
-				DA44463524C80AAF00B5D59D /* Font */,
-				DA339D0C24B3005000F23E2D /* Login */,
 				DA040A6624A1E138008777ED /* TabbedView.swift */,
-				DAE90E7A24A1ED1700D4DCF9 /* Recipe.swift */,
-				DA364E5324B61FAD00B2869B /* Homepage.swift */,
-				DA040A7624A1E195008777ED /* SearchPage.swift */,
-				DAE1BFEA24B86E8B008A97CC /* IndRecipeView.swift */,
-				DA3538C224C820E500975847 /* Images */,
-				DA339D0D24B303C100F23E2D /* Add Your Own */,
-				DA364E5224B61DC200B2869B /* Bookmarks */,
-				DA339D0E24B3171300F23E2D /* Settings.swift */,
-				DA6FAD7E24CE976F00B0724F /* KeyboardView.swift */,
-				DAE1BFE824B85BFA008A97CC /* UserProfileView.swift */,
+				DAFEDC2B257E1D48007F1684 /* Model */,
+				DAFEDC3E257E3015007F1684 /* Storage */,
+				DAFEDC3A257E2FC5007F1684 /* Generic Views */,
+				DAFEDC4D257E3512007F1684 /* Tabbed Views */,
+				DAFEDC4C257E34D6007F1684 /* Design */,
 				DA040A6824A1E13C008777ED /* Assets.xcassets */,
 				DA040A6D24A1E13C008777ED /* LaunchScreen.storyboard */,
 				DA040A7024A1E13C008777ED /* Info.plist */,
@@ -162,28 +161,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		DA339D0C24B3005000F23E2D /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				DA339D0624B2FE2800F23E2D /* AuthView.swift */,
-				DA339D0424B2FE2700F23E2D /* ContentView.swift */,
-				DA339D0524B2FE2700F23E2D /* SessionStore.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		DA339D0D24B303C100F23E2D /* Add Your Own */ = {
-			isa = PBXGroup;
-			children = (
-				DA040A7824A1E1A3008777ED /* Add_Your_Own.swift */,
-				DAB463CE24C959B2007B0375 /* Trial.swift */,
-				DA339D0024A9BF7700F23E2D /* IngredientsView.swift */,
-				DAE7B84524C1FE3500733F53 /* MultilineTF.swift */,
-				DA339CFF24A9BF7700F23E2D /* InstructionsView.swift */,
-			);
-			path = "Add Your Own";
-			sourceTree = "<group>";
-		};
 		DA3538C224C820E500975847 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,15 +172,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		DA364E5224B61DC200B2869B /* Bookmarks */ = {
-			isa = PBXGroup;
-			children = (
-				DA339D1224B32CB900F23E2D /* UUIDRecipe.swift */,
-				DA339D1424B331A900F23E2D /* Bookmarks.swift */,
-			);
-			path = Bookmarks;
-			sourceTree = "<group>";
-		};
 		DA44463524C80AAF00B5D59D /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +180,63 @@
 				DA44463C24C80E7100B5D59D /* TahomaRegular.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		DAFEDC2B257E1D48007F1684 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DAFEDC2C257E1DC7007F1684 /* DecodedRecipe.swift */,
+				DAFEDC37257E2EF0007F1684 /* EncodedRecipe.swift */,
+				DAFEDC2F257E1E04007F1684 /* SearchResults.swift */,
+				DA339D0524B2FE2700F23E2D /* SessionStore.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DAFEDC3A257E2FC5007F1684 /* Generic Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA339D0024A9BF7700F23E2D /* IngredientsView.swift */,
+				DAB463CE24C959B2007B0375 /* Create_Edit_Delete_View.swift */,
+				DAFEDC40257E30D6007F1684 /* Instruction_Note_View.swift */,
+				DAFEDC48257E348C007F1684 /* UUIDRecipe.swift */,
+				DAE7B84524C1FE3500733F53 /* MultilineTF.swift */,
+			);
+			path = "Generic Views";
+			sourceTree = "<group>";
+		};
+		DAFEDC3E257E3015007F1684 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				DA3538C224C820E500975847 /* Images */,
+				DAE90E7A24A1ED1700D4DCF9 /* RecipeViewModel.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		DAFEDC4C257E34D6007F1684 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				DA6FAD7E24CE976F00B0724F /* KeyboardView.swift */,
+				DA44463524C80AAF00B5D59D /* Font */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		DAFEDC4D257E3512007F1684 /* Tabbed Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA339D0624B2FE2800F23E2D /* AuthView.swift */,
+				DA339D0424B2FE2700F23E2D /* ContentView.swift */,
+				DA364E5324B61FAD00B2869B /* Homepage.swift */,
+				DA040A7624A1E195008777ED /* SearchPage.swift */,
+				DAE1BFEA24B86E8B008A97CC /* IndRecipeView.swift */,
+				DA040A7824A1E1A3008777ED /* Add_Your_Own.swift */,
+				DA339D1424B331A900F23E2D /* Bookmarks.swift */,
+				DA339D0E24B3171300F23E2D /* Settings.swift */,
+				DAE1BFE824B85BFA008A97CC /* UserProfileView.swift */,
+			);
+			path = "Tabbed Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,28 +359,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA040A6324A1E138008777ED /* AppDelegate.swift in Sources */,
-				DA339D0224A9BF7700F23E2D /* InstructionsView.swift in Sources */,
 				DAE7B84624C1FE3500733F53 /* MultilineTF.swift in Sources */,
 				DA339D0F24B3171300F23E2D /* Settings.swift in Sources */,
 				DA339D0924B2FE2800F23E2D /* AuthView.swift in Sources */,
 				DAE1BFEB24B86E8B008A97CC /* IndRecipeView.swift in Sources */,
+				DAFEDC41257E30D6007F1684 /* Instruction_Note_View.swift in Sources */,
 				DA040A6524A1E138008777ED /* SceneDelegate.swift in Sources */,
 				DA040A7924A1E1A3008777ED /* Add_Your_Own.swift in Sources */,
 				DA339D0324A9BF7700F23E2D /* IngredientsView.swift in Sources */,
 				DA6FAD7F24CE977000B0724F /* KeyboardView.swift in Sources */,
 				DA339D0124A9BF7700F23E2D /* ImagePicker.swift in Sources */,
-				DAB463CF24C959B3007B0375 /* Trial.swift in Sources */,
+				DAB463CF24C959B3007B0375 /* Create_Edit_Delete_View.swift in Sources */,
 				DA339D0724B2FE2800F23E2D /* ContentView.swift in Sources */,
-				DAE90E7B24A1ED1700D4DCF9 /* Recipe.swift in Sources */,
+				DAE90E7B24A1ED1700D4DCF9 /* RecipeViewModel.swift in Sources */,
 				DA3538C024C820DC00975847 /* ImageView.swift in Sources */,
 				DA3538C124C820DC00975847 /* FBimagePicker.swift in Sources */,
+				DAFEDC38257E2EF0007F1684 /* EncodedRecipe.swift in Sources */,
 				DAE1BFE924B85BFB008A97CC /* UserProfileView.swift in Sources */,
 				DA3538BF24C820DC00975847 /* FirebaseImageView.swift in Sources */,
+				DAFEDC30257E1E04007F1684 /* SearchResults.swift in Sources */,
 				DA040A7724A1E195008777ED /* SearchPage.swift in Sources */,
+				DAFEDC2D257E1DC7007F1684 /* DecodedRecipe.swift in Sources */,
 				DA339D1524B331A900F23E2D /* Bookmarks.swift in Sources */,
 				DA339D0824B2FE2800F23E2D /* SessionStore.swift in Sources */,
-				DA339D1324B32CB900F23E2D /* UUIDRecipe.swift in Sources */,
 				DA040A6724A1E138008777ED /* TabbedView.swift in Sources */,
+				DAFEDC49257E348C007F1684 /* UUIDRecipe.swift in Sources */,
 				DA364E5424B61FAD00B2869B /* Homepage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

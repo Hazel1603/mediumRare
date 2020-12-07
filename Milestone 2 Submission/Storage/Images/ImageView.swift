@@ -17,17 +17,6 @@ struct ImageView: View {
     @State var imageURL = ""
     
     var body: some View {
-//        VStack {
-//            if imageURL != "" {
-//                FirebaseImageView(imageURL: imageURL)
-//            }
-//
-//            Button(action: { self.shown.toggle() }) {
-//                Text("Upload Image").font(.title).bold()
-//            }.sheet(isPresented: $shown) {
-//                FBimagePicker(shown: self.$shown, imageURL: self.$imageURL)
-//                }.padding(10).background(Color.purple).foregroundColor(Color.white).cornerRadius(20)
-//        }.onAppear(perform: loadImageFromFirebase).animation(.spring())
         VStack {
             FirebaseImageView(imageURL: imageURL).frame(width: 300, height: 300)
             Button(action: loadImageFromFirebase) {
